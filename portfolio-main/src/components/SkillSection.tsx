@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface Skill {
   title: string;
@@ -18,43 +19,59 @@ interface SkillSectionProps {
 }
 
 const SkillSection: React.FC<SkillSectionProps> = ({ skillsData, theme }) => {
-  const getSkillIconSrc = (theme: string, skill: Skill) => {
-    if (
-      theme === "dark" &&
-      (skill.title.includes("Next") || skill.title.includes("Express"))
-    ) {
-      return skill.icon[1];
-    } else if (skill.title !== "Next.js" && skill.title !== "Express") {
-      return skill.icon;
-    } else {
-      return skill.icon[0];
-    }
-  };
-
   const getSkillColor = (theme: string, skill: Skill) => {
     if (
       theme === "dark" &&
-      (skill.title.includes("Next") || skill.title.includes("Express"))
+      (skill.title.includes("Next") || skill.title.includes("Express") || 
+       skill.title.includes("Flask") || skill.title.includes("GitHub") ||
+       skill.title.includes("Vercel") || skill.title.includes("LangChain"))
     ) {
-      return skill.color[1];
+      return Array.isArray(skill.color) ? skill.color[1] : skill.color;
     } else if (skill.title !== "Next.js" && skill.title !== "Express") {
       return skill.color;
     } else {
-      return skill.color[0];
+      return Array.isArray(skill.color) ? skill.color[0] : skill.color;
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+  };
+
   return (
-    <article
-      className={`h-auto rounded-2xl p-16 pt-32 grid grid-cols-3 gap-10 relative z-10 max-lg:w-full max-lg:grid-cols-2 max-lg:p-8  max-lg:pt-32 ${
+    <motion.article
+      className={`h-auto rounded-3xl p-16 pt-32 grid grid-cols-3 gap-10 relative z-10 max-w-[1600px] w-full max-lg:grid-cols-2 max-lg:p-8 max-lg:pt-32 lg:grid-cols-5 ${
         theme === "dark"
           ? "bg-[--blackblue] dark-mode-shadow"
           : "bg-gray-100 dark-shadow"
-      }
-      `}
+      }`}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
     >
       <div
-        className={`absolute top-10 left-1/2 transform -translate-x-1/2 px-4 py-2  rounded-t-xl w-full text-center`}
+        className={`absolute top-10 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-t-xl w-full text-center`}
       >
         <p className="font-black text-4xl">
           <span className="text-[--turquoise]">&lt;</span>
@@ -62,45 +79,47 @@ const SkillSection: React.FC<SkillSectionProps> = ({ skillsData, theme }) => {
           <span className="text-[--turquoise]">/&gt;</span>
         </p>
       </div>
-      {skillsData[0].skills.map((skill, index) => (
-        <div
-          key={index}
-          className={`skill-item cursor-pointer flex flex-col gap-6 rounded-2xl p-8 border-solid border-[0.25rem]  text-center max-lg:items-center    ${
-            theme === "dark" ? "bg-[--darkblue]" : "bg-[--icewhite]"
-          }`}
-          data-tooltip-id="my-tooltip"
-          data-tooltip-content={skill.title}
-          style={{
-            borderColor: getSkillColor(theme, skill),
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.animation = "pulse 2s infinite";
-            e.currentTarget.style.transform = "scale(1)";
-            document.documentElement.style.setProperty(
-              "--box-shadow-color",
-              `${getSkillColor(theme, skill)}b3`
-            );
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.animation = "";
-            e.currentTarget.style.transform = "";
-            document.documentElement.style.setProperty(
-              "--box-shadow-color",
-              "inherit"
-            );
-          }}
-        >
-          <img
-            src={getSkillIconSrc(theme, skill)}
-            alt={`${skill.icon}-icon`}
-            className="h-[9rem] w-[10rem] max-lg:h-[8rem]"
-          />
-          <h3 className="max-lg:text-[2rem] min-[1024px]:hidden">
-            {skill.title}
-          </h3>
-        </div>
-      ))}
-    </article>
+      {skillsData[0].skills.map((skill, index) => {
+        const IconComponent = skill.icon;
+        const skillColor = getSkillColor(theme, skill);
+        return (
+          <motion.div
+            key={index}
+            className={`skill-item cursor-pointer flex flex-col gap-6 rounded-2xl p-8 border-solid border-[0.25rem] text-center items-center justify-center ${
+              theme === "dark" ? "bg-[--darkblue]" : "bg-[--icewhite]"
+            }`}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={skill.title}
+            style={{
+              borderColor: skillColor,
+            }}
+            variants={itemVariants}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: `0 0 25px ${skillColor}60`,
+              transition: { duration: 0.2 },
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <motion.div 
+              className="flex items-center justify-center h-[9rem] w-[10rem] max-lg:h-[8rem]"
+              whileHover={{
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.4 },
+              }}
+            >
+              <IconComponent 
+                className="w-full h-full" 
+                style={{ color: skillColor }}
+              />
+            </motion.div>
+            <h3 className="max-lg:text-[2rem] min-[1024px]:hidden">
+              {skill.title}
+            </h3>
+          </motion.div>
+        );
+      })}
+    </motion.article>
   );
 };
 

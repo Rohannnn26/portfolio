@@ -108,7 +108,7 @@ const NavBar: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className={`fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 px-2 py-1.5 rounded-full
+            className={`fixed bottom-6 left-2 right-2 sm:left-0 sm:right-0 mx-auto w-fit max-w-[calc(100vw-1rem)] z-50 px-1.5 sm:px-2 py-1.5 rounded-full
               ${theme === "dark" 
                 ? "bg-black/80 border border-white/10" 
                 : "bg-white/95 border border-black/5"
@@ -116,7 +116,7 @@ const NavBar: React.FC = () => {
               backdrop-blur-xl shadow-lg
             `}
           >
-            <ul className="flex items-center gap-0.5 list-none m-0 p-0">
+            <ul className="flex items-center gap-0.5 list-none m-0 p-0 overflow-x-auto scrollbar-hide">
               {navLinks.map((link, index) => {
                 const isActive = activeSection === link.en;
                 const isHovered = hoveredLink === link.en;
@@ -127,12 +127,12 @@ const NavBar: React.FC = () => {
                     key={index}
                     onHoverStart={() => setHoveredLink(link.en)}
                     onHoverEnd={() => setHoveredLink(null)}
-                    className="relative list-none"
+                    className="relative list-none flex-shrink-0"
                   >
                     <NavLink
                       to={link.hash}
                       onClick={() => handleLinkClick(link.en)}
-                      className={`relative flex items-center justify-center gap-2 px-3 py-1.5 rounded-full transition-all duration-200
+                      className={`relative flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full transition-all duration-200
                         ${isActive 
                           ? theme === "dark" 
                             ? "text-green-400" 
@@ -170,7 +170,7 @@ const NavBar: React.FC = () => {
                       <motion.span
                         animate={isActive ? { scale: [1, 1.15, 1] } : {}}
                         transition={{ duration: 0.3 }}
-                        className="text-4xl"
+                        className="text-2xl sm:text-4xl"
                       >
                         <Icon strokeWidth={isActive ? 2.5 : 2} />
                       </motion.span>
@@ -183,7 +183,7 @@ const NavBar: React.FC = () => {
                             animate={{ opacity: 1, width: "auto" }}
                             exit={{ opacity: 0, width: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="text-2xl font-medium whitespace-nowrap overflow-hidden"
+                            className="text-base sm:text-2xl font-medium whitespace-nowrap overflow-hidden"
                           >
                             {link.en}
                           </motion.span>

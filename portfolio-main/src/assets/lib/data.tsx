@@ -1,20 +1,10 @@
-import htmlicon from "../../assets/icons/htmlicon.svg";
-import mysqlicon from "../../assets/icons/mysqlicon.svg";
-import postgresqlicon from "../../assets/icons/postgresqlicon.webp";
 import dockericon from "../../assets/icons/dockericon.png";
-import jiraicon from "../../assets/icons/jiraicon.svg";
 import firebaseicon from "../../assets/icons/firebaseicon.png";
 import flaskicon from "../../assets/icons/flaskicon.png";
 import AWSicon from "../../assets/icons/aws.png";
-import cssicon from "../../assets/icons/cssicon.svg";
-import javascripticon from "../../assets/icons/javascripticon.svg";
-import typescripticon from "../../assets/icons/typescripticon.svg";
 import reacticon from "../../assets/icons/reacticon.svg";
-import nextjsicon from "../../assets/icons/nextjsicon.svg";
 import nodejsicon from "../../assets/icons/nodejsicon.svg";
-import tailwindcssicon from "../../assets/icons/tailwindicon.svg";
 import mongodbicon from "../../assets/icons/mongoicon.svg";
-import cppicon from "../../assets/icons/cppicon.svg";
 import pythonicon from "../../assets/icons/pythonicon.webp";
 import websocketicon from "../../assets/icons/websocketsicon.png";
 import redisicon from "../../assets/icons/redisicon.webp";
@@ -33,10 +23,35 @@ import streamdevicon from "../../assets/icons/streamdevicon.jpg";
 import caricon from "../../assets/icons/car-icon.svg";
 import travelicon from "../../assets/icons/travel-icon.svg";
 import hardwareicon from "../../assets/icons/hardware-icon.svg";
-import nextjsiconwhite from "../../assets/icons/nextjsiconwhite.svg";
 import expressiconwhite from "../../assets/icons/expressiconwhite.svg";
-import { GoHome, GoPerson, GoMail, GoStack, GoProject } from "react-icons/go";
 import { FiGithub, FiLink, FiLinkedin, FiMail, FiHome, FiCode, FiFolder, FiBriefcase, FiSend } from "react-icons/fi";
+import { 
+  SiReact, 
+  SiNodedotjs, 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiSocketdotio,
+  SiTailwindcss, 
+  SiDocker, 
+  SiCss3, 
+  SiHtml5,
+  SiMysql,
+  SiMongodb,
+  SiRedis,
+  SiJavascript,
+  SiCplusplus,
+  SiPython,
+  SiFastapi,
+  SiFlask,
+  SiTensorflow,
+  SiScikitlearn,
+  SiGithub,
+  SiGit,
+  SiJupyter,
+  SiOpenai,
+  SiVercel,
+  SiLinux
+} from "react-icons/si";
 import Imprint from "../../components/Imprint";
 import Privacy from "../../components/Privacy";
 
@@ -211,133 +226,159 @@ export const liveTickerData = {
   },
 } as const;
 
-export const skillsDataTech = [
+export const skillsData = [
   {
-    skillsTitle: "Technologies",
+    skillsTitle: "Skills",
     skills: [
       {
         title: "React",
         hash: "#React",
-        icon: reacticon,
+        icon: SiReact,
         color: "#61DAFB",
       },
       {
         title: "Node.js",
         hash: "#Node.js",
-        icon: nodejsicon,
+        icon: SiNodedotjs,
         color: "#339933",
-      },
-      {
-        title: "Express",
-        hash: "#Express",
-        icon: [expressiconwhite, expressiconwhite],
-        color: ["#000000", "#FFFFFF"],
       },
       {
         title: "Next.js",
         hash: "#Next.js",
-        icon: [nextjsicon, nextjsiconwhite],
+        icon: SiNextdotjs,
         color: ["#000000", "#FFFFFF"],
+      },
+      {
+        title: "Vercel",
+        hash: "#Vercel",
+        icon: SiVercel,
+        color: ["#000000", "#FFFFFF"],
+      },
+      {
+        title: "Linux",
+        hash: "#Linux",
+        icon: SiLinux,
+        color: "#FCC624",
       },
       {
         title: "TypeScript",
         hash: "#TypeScript",
-        icon: typescripticon,
+        icon: SiTypescript,
         color: "#007ACC",
+      },
+      {
+        title: "Python",
+        hash: "#Python",
+        icon: SiPython,
+        color: "#3776AB",
+      },
+      {
+        title: "LangChain",
+        hash: "#LangChain",
+        icon: SiOpenai,
+        color: ["#000000", "#FFFFFF"],
+      },
+      {
+        title: "FastAPI",
+        hash: "#FastAPI",
+        icon: SiFastapi,
+        color: "#009688",
+      },
+      {
+        title: "Flask",
+        hash: "#Flask",
+        icon: SiFlask,
+        color: ["#000000", "#FFFFFF"],
+      },
+      {
+        title: "TensorFlow",
+        hash: "#TensorFlow",
+        icon: SiTensorflow,
+        color: "#FF6F00",
+      },
+      {
+        title: "Scikit-learn",
+        hash: "#ScikitLearn",
+        icon: SiScikitlearn,
+        color: "#F7931E",
       },
       {
         title: "Web Sockets",
         hash: "#WebSockets",
-        icon: websocketicon,
+        icon: SiSocketdotio,
         color: "#F1662A",
       },
       {
         title: "Tailwind",
         hash: "#Tailwind",
-        icon: tailwindcssicon,
+        icon: SiTailwindcss,
         color: "#38B2AC",
       },
       {
-        title: "AWS",
-        hash: "#AWS",
-        icon: AWSicon,
-        color: "#edb928",
-      },
-      {
         title: "Docker",
-        hash: "#DOcker",
-        icon: dockericon,
-        color: "#1572B6",
+        hash: "#Docker",
+        icon: SiDocker,
+        color: "#2496ED",
       },
       {
-        title: "JIRA",
-        hash: "#JIRA",
-        icon: jiraicon,
-        color: "#ffff",
+        title: "Git",
+        hash: "#Git",
+        icon: SiGit,
+        color: "#F05032",
       },
       {
-        title: "CSS",
-        color: "#1572B6",
-        hash: "#CSS",
-        icon: cssicon,
+        title: "GitHub",
+        hash: "#GitHub",
+        icon: SiGithub,
+        color: ["#000000", "#FFFFFF"],
       },
       {
-        title: "HTML",
-        hash: "#html",
-        icon: htmlicon,
-        color: "#F1662A",
-      },
-    ],
-  },
-] as const;
-
-export const skillsDataDB = [
-  {
-    skillsTitle: "Databases",
-    skills: [
-      {
-        title: "MySql",
-        hash: "#MySql",
-        icon: mysqlicon,
-        color: "#eb9a31",
+        title: "Jupyter",
+        hash: "#Jupyter",
+        icon: SiJupyter,
+        color: "#F37626",
       },
       {
         title: "MongoDB",
         hash: "#MongoDB",
-        icon: mongodbicon,
+        icon: SiMongodb,
         color: "#449C45",
+      },
+      {
+        title: "MySQL",
+        hash: "#MySQL",
+        icon: SiMysql,
+        color: "#4479A1",
       },
       {
         title: "Redis",
         hash: "#Redis",
-        icon: redisicon,
+        icon: SiRedis,
         color: "#D82C20",
       },
-    ],
-  },
-] as const;
-
-export const skillsDataLang = [
-  {
-    skillsTitle: "Languages",
-    skills: [
       {
         title: "JavaScript",
         hash: "#JavaScript",
-        icon: javascripticon,
+        icon: SiJavascript,
         color: "#F7DF1E",
       },
       {
         title: "C++",
         hash: "#C++",
-        icon: cppicon,
-        color: "#3178eb",
+        icon: SiCplusplus,
+        color: "#00599C",
       },
       {
-        title: "Python",
-        hash: "#Python",
-        icon: pythonicon,
-        color: "#F7DF1E",
+        title: "HTML",
+        hash: "#HTML",
+        icon: SiHtml5,
+        color: "#E34F26",
+      },
+      {
+        title: "CSS",
+        hash: "#CSS",
+        icon: SiCss3,
+        color: "#1572B6",
       },
     ],
   },

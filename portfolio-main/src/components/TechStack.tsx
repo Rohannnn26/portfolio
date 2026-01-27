@@ -1,11 +1,7 @@
 import React, { useRef } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useSectionInView } from "../assets/lib/hooks";
-import {
-  skillsDataLang,
-  skillsDataDB,
-  skillsDataTech,
-} from "../assets/lib/data";
+import { skillsData } from "../assets/lib/data";
 import { useTheme } from "../context/theme-context";
 import SkillSection from "./SkillSection";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -44,14 +40,8 @@ const TechStack: React.FC = () => {
             </h2>
           </motion.div>
         </div>
-        <div className="flex gap-40 justify-center max-lg:flex-col">
-          <div className="w-auto">
-            <SkillSection skillsData={skillsDataTech} theme={theme} />
-          </div>
-          <div className="flex flex-col h-[inherit] text-center justify-around w-auto max-lg:gap-40">
-            <SkillSection skillsData={skillsDataDB} theme={theme} />
-            <SkillSection skillsData={skillsDataLang} theme={theme} />
-          </div>
+        <div className="flex justify-center">
+          <SkillSection skillsData={skillsData} theme={theme} />
         </div>
       </section>
       <ReactTooltip
