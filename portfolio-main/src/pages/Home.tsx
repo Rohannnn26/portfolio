@@ -37,7 +37,6 @@ const Home: React.FC = () => {
             />
           </Suspense>
           <Suspense fallback={<div>Loading...</div>}>
-            <LazySiteBarLeft />
             <LazyHeaderIntro />
             
             <LazyTechStack />

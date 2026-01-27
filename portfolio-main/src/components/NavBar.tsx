@@ -108,33 +108,15 @@ const NavBar: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className={`fixed bottom-8 left-0 right-0 mx-auto w-fit z-50 px-6 py-4 rounded-3xl
+            className={`fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 px-2 py-1.5 rounded-full
               ${theme === "dark" 
-                ? "bg-black/60 border border-white/10" 
-                : "bg-white/80 border border-black/5"
+                ? "bg-black/80 border border-white/10" 
+                : "bg-white/95 border border-black/5"
               }
-              backdrop-blur-xl shadow-2xl shadow-black/20
+              backdrop-blur-xl shadow-lg
             `}
           >
-            {/* Animated background glow */}
-            <motion.div
-              className="absolute inset-0 rounded-3xl opacity-50 -z-10"
-              style={{
-                background: theme === "dark" 
-                  ? "radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.15), transparent 70%)"
-                  : "radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1), transparent 70%)"
-              }}
-              animate={{
-                scale: [1, 1.02, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-
-            <ul className="flex items-center gap-2 sm:gap-4">
+            <ul className="flex items-center gap-0.5 list-none m-0 p-0">
               {navLinks.map((link, index) => {
                 const isActive = activeSection === link.en;
                 const isHovered = hoveredLink === link.en;
@@ -143,107 +125,75 @@ const NavBar: React.FC = () => {
                 return (
                   <motion.li
                     key={index}
-                    variants={linkVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    whileTap="tap"
                     onHoverStart={() => setHoveredLink(link.en)}
                     onHoverEnd={() => setHoveredLink(null)}
-                    className="relative"
+                    className="relative list-none"
                   >
                     <NavLink
                       to={link.hash}
                       onClick={() => handleLinkClick(link.en)}
-                      className={`relative flex items-center gap-3 px-5 py-4 rounded-2xl transition-colors duration-300
+                      className={`relative flex items-center justify-center gap-2 px-3 py-1.5 rounded-full transition-all duration-200
                         ${isActive 
                           ? theme === "dark" 
-                            ? "text-blue-400" 
-                            : "text-blue-600"
+                            ? "text-green-400" 
+                            : "text-green-600"
                           : theme === "dark"
                             ? "text-gray-400 hover:text-white"
-                            : "text-gray-600 hover:text-gray-900"
+                            : "text-gray-500 hover:text-gray-900"
                         }
                       `}
                     >
-                      {/* Active/Hover background pill */}
-                      <AnimatePresence>
-                        {(isActive || isHovered) && (
-                          <motion.span
-                            layoutId="navPill"
-                            variants={glowVariants}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            className={`absolute inset-0 rounded-2xl -z-10
-                              ${isActive
-                                ? theme === "dark"
-                                  ? "bg-blue-500/20 border border-blue-500/30"
-                                  : "bg-blue-500/10 border border-blue-500/20"
-                                : theme === "dark"
-                                  ? "bg-white/5"
-                                  : "bg-black/5"
-                              }
-                            `}
-                          />
-                        )}
-                      </AnimatePresence>
-
-                      {/* Icon with animation */}
-                      <motion.span
-                        animate={{
-                          rotate: isActive ? [0, -10, 10, 0] : 0,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: "easeInOut"
-                        }}
-                        className="text-4xl sm:text-5xl"
-                      >
-                        <Icon />
-                      </motion.span>
-
-                      {/* Text - hidden on mobile, visible on larger screens */}
-                      <motion.span
-                        initial={{ opacity: 0, width: 0 }}
-                        animate={{ 
-                          opacity: isActive || isHovered ? 1 : 0,
-                          width: isActive || isHovered ? "auto" : 0
-                        }}
-                        transition={{ duration: 0.2 }}
-                        className="text-xl font-semibold whitespace-nowrap overflow-hidden hidden sm:block"
-                      >
-                        {link.en}
-                      </motion.span>
-
-                      {/* Active indicator dot */}
-                      {isActive && (
+                      {/* Active/Hover background */}
+                      {(isActive || isHovered) && (
                         <motion.span
-                          layoutId="activeDot"
-                          className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full
-                            ${theme === "dark" ? "bg-blue-400" : "bg-blue-600"}
+                          layoutId="navBg"
+                          className={`absolute inset-0 rounded-full -z-10
+                            ${isActive
+                              ? theme === "dark"
+                                ? "bg-green-500/15"
+                                : "bg-green-500/10"
+                              : theme === "dark"
+                                ? "bg-white/5"
+                                : "bg-black/5"
+                            }
                           `}
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
+                          initial={false}
                           transition={{
                             type: "spring",
-                            stiffness: 500,
+                            stiffness: 350,
                             damping: 30
                           }}
                         />
                       )}
+
+                      {/* Icon */}
+                      <motion.span
+                        animate={isActive ? { scale: [1, 1.15, 1] } : {}}
+                        transition={{ duration: 0.3 }}
+                        className="text-4xl"
+                      >
+                        <Icon strokeWidth={isActive ? 2.5 : 2} />
+                      </motion.span>
+
+                      {/* Text - shows on hover or active */}
+                      <AnimatePresence>
+                        {(isActive || isHovered) && (
+                          <motion.span
+                            initial={{ opacity: 0, width: 0 }}
+                            animate={{ opacity: 1, width: "auto" }}
+                            exit={{ opacity: 0, width: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="text-2xl font-medium whitespace-nowrap overflow-hidden"
+                          >
+                            {link.en}
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
                     </NavLink>
                   </motion.li>
                 );
               })}
             </ul>
-
-            {/* Subtle shine effect */}
-            <motion.div
-              className="absolute top-0 left-0 right-0 h-px rounded-full opacity-50"
-              style={{
-                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)"
-              }}
-            />
           </motion.nav>
         )}
       </AnimatePresence>

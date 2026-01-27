@@ -36,17 +36,18 @@ import hardwareicon from "../../assets/icons/hardware-icon.svg";
 import nextjsiconwhite from "../../assets/icons/nextjsiconwhite.svg";
 import expressiconwhite from "../../assets/icons/expressiconwhite.svg";
 import { GoHome, GoPerson, GoMail, GoStack, GoProject } from "react-icons/go";
-import { FiGithub, FiLink, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiLink, FiLinkedin, FiMail, FiHome, FiCode, FiFolder, FiBriefcase, FiSend } from "react-icons/fi";
 import Imprint from "../../components/Imprint";
 import Privacy from "../../components/Privacy";
 
 export const headerIntroData = {
   title: {
-    en: "Hi, I'm Sunpreet Singh",
+    en: "Hey, I'm ",
   },
-  subtitle: "Software Engineer",
+  name: "Rohan Gupta",
+  subtitle: "AI Developer",
   description: {
-    en: "I'm a pre-final year CSE student who loves building cool stuff and making things run faster. I enjoy solving tricky problems, automating workflows, and picking up new tech along the way. When I'm not coding, you’ll find me helping others, working on side projects, or just geeking out over something new.",
+    en: "Passionate about building intelligent systems that solve real-world problems. I specialize in developing AI/ML applications, from neural networks to production-ready machine learning pipelines that scale.",
   },
   buttons: [
     {
@@ -58,12 +59,12 @@ export const headerIntroData = {
       color: "main-btn",
     },
     {
-      name: "Projects",
+      name: "Resume",
       label: {
-        en: "My Projects",
+        en: "Resume",
       },
-      icon: FiGithub,
-      color: "secondary-btn",
+      icon: FiLink,
+      color: "main-btn",
     },
   ],
 } as const;
@@ -343,11 +344,11 @@ export const skillsDataLang = [
 ] as const;
 
 export const navLinks = [
-  { en: "Home", hash: "#home", icon: GoHome },
-  { en: "Skills", hash: "#skills", icon: GoStack },
-  { en: "Projects", hash: "#projects", icon: GoProject },
-  { en: "Experience", hash: "#experience", icon: GoPerson },
-  { en: "Contact", hash: "#contact", icon: GoMail },
+  { en: "Home", hash: "#home", icon: FiHome },
+  { en: "Skills", hash: "#skills", icon: FiCode },
+  { en: "Projects", hash: "#projects", icon: FiFolder },
+  { en: "Experience", hash: "#experience", icon: FiBriefcase },
+  { en: "Contact", hash: "#contact", icon: FiSend },
 ] as const;
 
 export const FooterLinks = [

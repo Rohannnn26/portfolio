@@ -43,15 +43,14 @@ export default function ThemeSwitch() {
       ${
         isTooltipVisible ? "h-[24rem] w-[4rem] z-10" : " h-[4rem] w-[4rem] z-10"
       }
-      ${isMobile ? "top-10 h-[20rem]" : "bottom-5"}`}
+      top-10`}
       onMouseEnter={() => setIsTooltipVisible(true)}
       onMouseLeave={() => setIsTooltipVisible(false)}
     >
       <button
-        className={`shortcut-btn fixed z-10 bottom-5 right-10  w-[4rem] h-[4rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 ${
+        className={`shortcut-btn fixed z-10 top-10 right-10  w-[4rem] h-[4rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 ${
           theme === "dark" ? "bg-[--darkblue]" : "bg-white"
         }
-        ${isMobile ? "top-10" : "bottom-5"}
         `}
         onClick={toggleTheme}
         aria-label="Switch Dark and Light"
@@ -64,13 +63,12 @@ export default function ThemeSwitch() {
         }
         ${
           isTooltipVisible
-            ? "z-10 opacity-100 bottom-[6rem]"
+            ? "z-10 opacity-100 top-32"
             : "-z-100 opacity-0"
         }
-        ${isMobile ? "top-32" : "bottom-5 pointer-events-auto"}
-        
+        pointer-events-auto
         ${
-          isMobile && isTooltipVisible
+          isTooltipVisible
             ? "pointer-events-auto"
             : "pointer-events-none"
         }`}
@@ -90,12 +88,12 @@ export default function ThemeSwitch() {
         }
         ${
           isTooltipVisible
-            ? "z-10 opacity-100 bottom-[11rem]"
+            ? "z-10 opacity-100 top-52"
             : "-z-10 opacity-0"
         }
-        ${isMobile ? "top-52" : "bottom-5 pointer-events-auto"}
+        pointer-events-auto
         ${
-          isMobile && isTooltipVisible
+          isTooltipVisible
             ? "pointer-events-auto"
             : "pointer-events-none"
         }`}
@@ -115,13 +113,13 @@ export default function ThemeSwitch() {
         }
         ${
           isTooltipVisible
-            ? "z-10 opacity-100 bottom-[16rem]"
+            ? "z-10 opacity-100 top-72"
             : "-z-10 opacity-0"
         }
         
-        ${isMobile ? "top-72" : "bottom-5 pointer-events-auto"}
+        pointer-events-auto
         ${
-          isMobile && isTooltipVisible
+          isTooltipVisible
             ? "pointer-events-auto"
             : "pointer-events-none"
         }
