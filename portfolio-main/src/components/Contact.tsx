@@ -248,26 +248,6 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                   : "bg-gray-100 dark-shadow"
               }`}
             />
-            <div className="privacy-checkbox flex gap-16">
-              <label
-                className="block w-2 h-2 cursor-pointer"
-                htmlFor="checkbox-label"
-              >
-                <input
-                  type="checkbox"
-                  required
-                  name="checkbox-label"
-                  id="checkbox-label"
-                />
-                <span className="checkbox"></span>
-              </label>
-              <p className="">
-                {`${contactData.privacyOptIn.checkbox.en}`}
-              </p>
-            </div>
-            <p className="text-center">
-              {`${contactData.privacyOptIn.description.en}`}
-            </p>
             <Button
               value={
                 `${contactData.button.value.en}`

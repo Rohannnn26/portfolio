@@ -7,5 +7,6 @@ export const GDSC = () => {
 };
 export const MotilaOswal = () => {
   return <img className='rounded-full w-full h-full object-cover' src={motilaloswalicon} alt="img" />;
-};
+  };
 
+  

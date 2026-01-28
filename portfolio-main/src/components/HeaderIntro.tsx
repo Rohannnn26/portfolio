@@ -6,6 +6,7 @@ import { useSectionInView } from "../assets/lib/hooks";
 import { useActiveSectionContext } from "../context/active-section-context";
 import { useTheme } from "../context/theme-context";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import resumePDF from "../assets/resume/Rohan_Gupta.pdf";
 
 const CodeAnimation3D = lazy(() => import("./CodeAnimation3D"));
 
@@ -177,24 +178,43 @@ const HeaderIntro: React.FC = () => {
         </motion.p>
 
         <div className="button-container flex items-start justify-start gap-10 mb-8 max-lg:flex-col max-lg:items-center max-lg:justify-center">
-          {headerIntroData.buttons.map((button, index) => (
-            <Button
-              key={index}
-              label={button.label.en}
-              iconSVG={button.icon}
-              link={`#${button.name.toLocaleLowerCase()}`}
-              buttoncolor={button.color}
-              onClick={() => {
-                setActiveSection(button.name);
-                setTimeOfLastClick(Date.now());
-              }}
-            />
-          ))}
+          {headerIntroData.buttons.map((button, index) => {
+            // Handle Resume button separately as a download link
+            if (button.name === "Resume") {
+              return (
+                <a 
+                  key={index}
+                  href={resumePDF} 
+                  download="Rohan_Gupta_Resume.pdf"
+                  className="no-underline"
+                >
+                  <button className={`text-white drop-shadow-2xl border-none py-4 px-8 rounded-lg text-[1.6rem] transition-all duration-200 flex flex-row gap-4 justify-center items-center cursor-pointer ${button.color} shadow-xl hover:scale-100 hover:-translate-y-2 hover:drop-shadow-xl transition-all duration-200 w-max max-lg:text-xl max-lg:rounded-xl`}>
+                    <button.icon className="w-max h-10" />
+                    {button.label.en}
+                  </button>
+                </a>
+              );
+            }
+            // Normal section navigation for other buttons
+            return (
+              <Button
+                key={index}
+                label={button.label.en}
+                iconSVG={button.icon}
+                link={`#${button.name.toLocaleLowerCase()}`}
+                buttoncolor={button.color}
+                onClick={() => {
+                  setActiveSection(button.name);
+                  setTimeOfLastClick(Date.now());
+                }}
+              />
+            );
+          })}
         </div>
         
         <div className="social-icons flex gap-8 max-lg:justify-center">
           <motion.a
-            href="https://github.com/yourusername"
+            href="https://github.com/Rohannnn26"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, y: -3 }}
@@ -204,7 +224,7 @@ const HeaderIntro: React.FC = () => {
             <FiGithub />
           </motion.a>
           <motion.a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/rohan-gupta-457a72207/"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, y: -3 }}
@@ -214,7 +234,7 @@ const HeaderIntro: React.FC = () => {
             <FiLinkedin />
           </motion.a>
           <motion.a
-            href="mailto:your@email.com"
+            href="mailto:rohan26gupta2005@gmail.com"
             whileHover={{ scale: 1.2, y: -3 }}
             whileTap={{ scale: 0.9 }}
             className={`text-5xl transition-colors duration-300 ${theme === "dark" ? "text-gray-400 hover:text-red-400" : "text-gray-600 hover:text-red-600"}`}

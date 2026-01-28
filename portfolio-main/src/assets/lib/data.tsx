@@ -1,29 +1,14 @@
-import dockericon from "../../assets/icons/dockericon.png";
-import firebaseicon from "../../assets/icons/firebaseicon.png";
-import flaskicon from "../../assets/icons/flaskicon.png";
 import AWSicon from "../../assets/icons/aws.png";
 import reacticon from "../../assets/icons/reacticon.svg";
-import nodejsicon from "../../assets/icons/nodejsicon.svg";
 import mongodbicon from "../../assets/icons/mongoicon.svg";
 import pythonicon from "../../assets/icons/pythonicon.webp";
 import websocketicon from "../../assets/icons/websocketsicon.png";
 import redisicon from "../../assets/icons/redisicon.webp";
-import solidityicon from "../../assets/icons/solidityicon.svg";
 import webrtcicon from "../../assets/icons/webrtcicon.png";
-import thusticon from "../../assets/icons/thusticon.jpeg";
-import scoreicon from "../../assets/icons/score.png";
-import linkfluenceicon from "../../assets/icons/linkfluenceicon.jpg";
-import jalsamadhanicon from "../../assets/icons/jalsamadhanicon.jpg";
 import restapiicon from "../../assets/icons/restapiicon.png";
-import rendericon from "../../assets/icons/rendericon.svg";
-import passporticon from "../../assets/icons/passportjs.png";
-import jwticon from "../../assets/icons/jwticon.svg";
-import reactnativeicon from "../../assets/icons/reactnativeicon.svg";
-import streamdevicon from "../../assets/icons/streamdevicon.jpg";
 import caricon from "../../assets/icons/car-icon.svg";
 import travelicon from "../../assets/icons/travel-icon.svg";
 import hardwareicon from "../../assets/icons/hardware-icon.svg";
-import expressiconwhite from "../../assets/icons/expressiconwhite.svg";
 import { FiGithub, FiLink, FiLinkedin, FiMail, FiHome, FiCode, FiFolder, FiBriefcase, FiSend } from "react-icons/fi";
 import { 
   SiReact, 
@@ -80,142 +65,98 @@ export const headerIntroData = {
       },
       icon: FiLink,
       color: "main-btn",
+      link: "/resume.pdf",
     },
   ],
 } as const;
 
+// Placeholder images - replace with your actual screenshot imports
+// import codesightScreenshot from "../../assets/img/codesight-screenshot.png";
+// import solarScreenshot from "../../assets/img/solar-screenshot.png";
+// import vcallScreenshot from "../../assets/img/vcall-screenshot.png";
+// import imagecaptionScreenshot from "../../assets/img/imagecaption-screenshot.png";
+
 export const projectsData = [
   {
-    title: "ScoreFlow - Code Assessment Platform",
+    title: "CodeSight AI",
     description_EN:
-      "Scoreflow is a online code assessment platform built with MERN, Passport.js, Docker, and AWS, featuring automated code execution, plagiarism detection, proctoring, and analytics. It leverages Docker-based compiler images for isolated multi-language execution, Bull Queues for concurrency control, and Redis-backed Passport.js authentication with Google OAuth 2.0. Deployed with Nginx, GitHub Actions (CI/CD), and AWS, it ensures a scalable, secure, and efficient coding evaluation system.",
+      "Built an AI-powered GitHub repository code reviewer using LangChain, LangGraph, and FastAPI to analyze 100+ source files per repository and generate automated improvement suggestions. Integrated MCP tools for direct repository access and intelligent code inspection across 1,000+ lines of code. Implemented Redis caching to optimize repeated analysis workflows and reduce response latency by 60%. Designed agent orchestration pipeline coordinating 5+ specialized agents for modular code analysis.",
     technologies: [
-      { name: "ReactJs", icon: reacticon },
-      { name: "NodeJs", icon: nodejsicon },
-      { name: "Docker", icon: dockericon },
-      { name: "WebSockets", icon: websocketicon },
-      { name: "AWS", icon: AWSicon },
-      { name: "MongoDB", icon: mongodbicon },
-      { name: "Express", icon: expressiconwhite },
+      { name: "LangGraph", icon: pythonicon },
+      { name: "FastAPI", icon: pythonicon },
       { name: "Redis", icon: redisicon },
-      { name: "PassportJs", icon: passporticon },
+      { name: "PostgreSQL", icon: mongodbicon },
+      { name: "React", icon: reacticon },
     ],
-    image: scoreicon,
-    deploymenturl: "https://scoreflow.live/",
-    githuburl: "https://github.com/sun-28/ScoreFlow",
+    image: "", // TODO: Replace with codesightScreenshot
+    githuburl: "#", // TODO: Replace with actual GitHub URL
     githubicon: FiGithub,
-    deploymenticon: FiLink,
     colors: {
       main: "main-btn",
       second: "secondary-btn",
       icon: "white",
-      projectcolor: "#FFD5BD",
+      projectcolor: "#7C3AED",
     },
   },
   {
-    title: "Thust - Deployment App",
+    title: "Solar Power Prediction",
     description_EN:
-      "Thust is a robust and scalable deployment service designed to streamline the process of deploying web applications. Leveraging Docker for containerization and AWS services (S3, ECR, ECS) for building and storing web applications, Thust ensures a seamless deployment experience. The backend leverages Redis and WebSokets for ensuring efficient PubSub.",
+      "Performed comprehensive Exploratory Data Analysis (EDA) on a 120,000+ record solar power dataset. Engineered predictive models using Linear Regression, Decision Trees, and Random Forests, achieving an R-squared score of 0.92. Optimized feature selection and hyperparameters, reducing prediction error by 15%.",
     technologies: [
-      { name: "NodeJs", icon: nodejsicon },
-      { name: "Docker", icon: dockericon },
-      { name: "AWS", icon: AWSicon },
-      { name: "Redis", icon: redisicon },
-      { name: "WebSockets", icon: websocketicon },
-      { name: "ReactJs", icon: reacticon },
-      { name: "MongoDB", icon: mongodbicon },
-      { name: "Express", icon: expressiconwhite },
-      { name: "Render", icon: rendericon },
+      { name: "Pandas", icon: pythonicon },
+      { name: "Matplotlib", icon: pythonicon },
+      { name: "Scikit-learn", icon: pythonicon },
+      { name: "Python", icon: pythonicon },
     ],
-    image: thusticon,
-    deploymenturl: "",
-    githuburl: "https://github.com/sun-28/Thust-Deployment-App",
+    image: "", // TODO: Replace with solarScreenshot
+    githuburl: "#", // TODO: Replace with actual GitHub URL
     githubicon: FiGithub,
-    deploymenticon: FiLink,
     colors: {
       main: "main-btn",
       second: "secondary-btn",
       icon: "white",
-      projectcolor: "#FFD5BD",
+      projectcolor: "#F59E0B",
     },
   },
   {
-    title: "SteamDev",
+    title: "V-Call",
     description_EN:
-      "StreamDev is a platform for live coding tutorials, featuring live stream coding, real-time chat, and Web3 Ethereum donations. It allows developers to conduct interactive sessions, with AI and OCR models providing real-time code updates and explanations. StreamDev aims to create an engaging and interactive learning environment for developers and viewers.",
+      "Developed a multi-user video calling platform using Agora SDK and WebRTC with 99.99% uptime. Integrated real-time speech-to-speech translation, live captions, and language translation using Azure Speech Services, achieving 90% accuracy across 100+ languages. Implemented a real-time chat system with WebSockets, supporting automatic message translation.",
     technologies: [
-      { name: "ReactJs", icon: reacticon },
-      { name: "NodeJs", icon: nodejsicon },
-      { name: "ExpressJs", icon: expressiconwhite },
-      { name: "MongoDB", icon: mongodbicon },
+      { name: "Django", icon: pythonicon },
+      { name: "REST API", icon: restapiicon },
+      { name: "Azure", icon: AWSicon },
       { name: "WebSockets", icon: websocketicon },
       { name: "WebRTC", icon: webrtcicon },
-      { name: "Docker", icon: dockericon },
-      { name: "Redis", icon: redisicon },
-      { name: "Python", icon: pythonicon },
-      { name: "Solidity", icon: solidityicon },
     ],
-    image: streamdevicon,
-    deploymenturl: "",
-    githuburl: "https://github.com/sun-28/StreamDev",
+    image: "", // TODO: Replace with vcallScreenshot
+    githuburl: "#", // TODO: Replace with actual GitHub URL
     githubicon: FiGithub,
-    deploymenticon: FiLink,
     colors: {
       main: "main-btn",
       second: "secondary-btn",
       icon: "white",
-      projectcolor: "#70B9BE",
+      projectcolor: "#10B981",
     },
   },
   {
-    title: "LinkFluence",
+    title: "Image Caption Generator",
     description_EN:
-      "Developed a platform connecting influencers, brands, and events, serving as a virtual manager for influencers, a marketing tool for brands, and a sponsorship tool for events, with a secure backend featuring RESTful APIs for various functionalities and integration of a Dockerized Python-based AI/ML model.",
+      "Developed an Image Caption Generator using deep learning that automatically generates descriptive natural-language captions from input images, bridging computer vision and NLP. Implemented CNN-based feature extraction using a pretrained model and integrated a sequence model (LSTM) to decode visual features into accurate text captions. Enhanced model performance by incorporating an attention mechanism to focus the decoder on relevant image features during caption generation. Built an interactive Streamlit web application to allow users to upload images and receive generated captions in real time.",
     technologies: [
-      { name: "ReactJs", icon: reacticon },
-      { name: "NodeJs", icon: nodejsicon },
-      { name: "ExpressJs", icon: expressiconwhite },
-      { name: "MongoDB", icon: mongodbicon },
-      { name: "JWT & Bcrypt", icon: jwticon },
-      { name: "RESTful APIs", icon: restapiicon },
-    ],
-    image: linkfluenceicon,
-    deploymenturl: "",
-    githuburl: "https://github.com/sun-28/Linkfluence",
-    githubicon: FiGithub,
-    deploymenticon: FiLink,
-    colors: {
-      main: "main-btn",
-      second: "secondary-btn",
-      icon: "white",
-      projectcolor: "#E3964A",
-    },
-  },
-  {
-    title: "JalSamadhan",
-    description_EN:
-      "Jalsamadhan is an innovative mobile application designed to address the increasing threats of water-related disasters due to urbanization and environmental instability. The app integrates advanced technologies, crowd-sourced data, and community engagement to provide real-time insights like heat maps and streamlines disaster management processes.",
-    technologies: [
-      { name: "NodeJs", icon: nodejsicon },
-      { name: "ExpressJs", icon: expressiconwhite },
-      { name: "MongoDB", icon: mongodbicon },
-      { name: "JWT & Bcrypt", icon: jwticon },
-      { name: "RESTful APIs", icon: restapiicon },
-      { name: "Flask", icon: flaskicon },
       { name: "Python", icon: pythonicon },
-      { name: "FireBase", icon: firebaseicon },
-      { name: "React Native", icon: reactnativeicon },
+      { name: "TensorFlow", icon: pythonicon },
+      { name: "Keras", icon: pythonicon },
+      { name: "Streamlit", icon: pythonicon },
     ],
-    image: jalsamadhanicon,
-    deploymenturl: "",
-    githuburl: "https://github.com/sun-28/JalSamadhan",
+    image: "", // TODO: Replace with imagecaptionScreenshot
+    githuburl: "#", // TODO: Replace with actual GitHub URL
     githubicon: FiGithub,
-    deploymenticon: FiLink,
     colors: {
       main: "main-btn",
       second: "secondary-btn",
       icon: "white",
-      projectcolor: "#E3964A",
+      projectcolor: "#EC4899",
     },
   },
 ] as const;
@@ -398,23 +339,23 @@ export const FooterLinks = [
 ] as const;
 
 export const sideBarRightMail = {
-  link: "mailto:sunpahwa28@gmail.com",
-  text: "sunpahwa28@gmail.com",
+  link: "mailto:rohan26gupta2005@gmail.com",
+  text: "rohan26gupta2005@gmail.com",
 } as const;
 
 export const sideBarLeftSocials = [
   {
-    link: "https://www.linkedin.com/in/sun28/",
+    link: "https://www.linkedin.com/in/rohan-gupta-457a72207/",
     icon: FiLinkedin,
     altimgname: "linkedin",
   },
   {
-    link: "https://github.com/sun-28",
+    link: "https://github.com/Rohannnn26",
     icon: FiGithub,
     altimgname: "github",
   },
   {
-    link: "mailto:sunpahwa28@gmail.com",
+    link: "mailto:rohan26gupta2005@gmail.com",
     icon: FiMail,
     altimgname: "mail",
   },
